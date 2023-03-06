@@ -1,0 +1,49 @@
+LAB1_3                                                                                                        PAGE 1
+
+                       1    
+                       2    ; CSEG - внешняя память программы
+                       3    ; DSEG - резидентная память данных
+                       4    ; Пересылка DPH, DPL, TH0, TL0, TH1, TL1 в DSEG (банк 3) по адресам 1
+                                                                               8h-1Dh (18, 19, 1A, 1B, 1C, 1D)
+                       5    
+                       6    $mod52
+                       7    
+0000                   8        ORG 0h ; Начальный адрес программы (если нет прерыв�
+                                                                               �ний)
+0000                   9    START:
+0000 758301           10        MOV DPH, #1h
+0003 758202           11        MOV DPL, #2h
+0006 758C03           12        MOV TH0, #3h
+0009 758A04           13        MOV TL0, #4h
+000C 758D05           14        MOV TH1, #5h
+000F 758B06           15        MOV TL1, #6h
+                      16    
+0012 7818             17        MOV R0, #18h
+                      18    
+0014 A683             19        MOV @R0, DPH
+0016 08               20        INC R0
+0017 A682             21        MOV @R0, DPL
+0019 08               22        INC R0
+001A A68C             23        MOV @R0, TH0
+001C 08               24        INC R0
+001D A68A             25        MOV @R0, TL0
+001F 08               26        INC R0
+0020 A68D             27        MOV @R0, TH1
+0022 08               28        INC R0
+0023 A68B             29        MOV @R0, TL1
+0025 08               30        INC R0
+                      31    
+0026 80D8             32        JMP START
+                      33    
+                      34        END
+
+VERSION 1.2h ASSEMBLY COMPLETE, 0 ERRORS FOUND
+LAB1_3                                                                                                        PAGE 2
+
+DPH. . . . . . . . . . . . . . .  D ADDR  0083H  PREDEFINED  
+DPL. . . . . . . . . . . . . . .  D ADDR  0082H  PREDEFINED  
+START. . . . . . . . . . . . . .  C ADDR  0000H  
+TH0. . . . . . . . . . . . . . .  D ADDR  008CH  PREDEFINED  
+TH1. . . . . . . . . . . . . . .  D ADDR  008DH  PREDEFINED  
+TL0. . . . . . . . . . . . . . .  D ADDR  008AH  PREDEFINED  
+TL1. . . . . . . . . . . . . . .  D ADDR  008BH  PREDEFINED  
