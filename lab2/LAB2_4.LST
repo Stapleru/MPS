@@ -1,0 +1,31 @@
+LAB2_4                                                                                                        PAGE 1
+
+                       1    $mod52
+0000                   2    ORG 0h
+                       3    
+0000                   4    START:
+                       5    
+0000 E580              6            MOV A, P0 ; заносим входные данные в акк
+0002 540F              7            ANL A,#0FH ; обрезаем старший тетраэдр
+0004 90000C            8            MOV DPTR, #table ; указываем на таблицу
+0007 93                9            MOVC A, @A+DPTR ; берем данные по адресу таблицы со сд
+                                                                               вигом
+                      10    
+0008 F590             11            MOV P1,A ; вывод результата в П1
+000A 80F4             12            JMP START ; цикл
+                      13    
+000C                  14    table:
+000C FFFFFFFF         15            DB 0FFH,0FFH,0FFH,0FFH,0FFH,0FFH,000H,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH,0FFH
+0010 FFFF00FF   
+0014 FFFFFFFF   
+0018 FFFFFFFF   
+                      16    
+                      17    END
+
+VERSION 1.2h ASSEMBLY COMPLETE, 0 ERRORS FOUND
+LAB2_4                                                                                                        PAGE 2
+
+P0 . . . . . . . . . . . . . . .  D ADDR  0080H  PREDEFINED  
+P1 . . . . . . . . . . . . . . .  D ADDR  0090H  PREDEFINED  
+START. . . . . . . . . . . . . .  C ADDR  0000H  
+TABLE. . . . . . . . . . . . . .  C ADDR  000CH  
